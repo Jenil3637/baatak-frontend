@@ -55,7 +55,7 @@ function App() {
         <div className="flex">
           <Sidebar />
           {/* Add left margin to avoid overlap */}
-          <div className="flex-1 p-4 ml-64"> 
+          <div className="flex-1 p-4 ml-16 lg:ml-64"> 
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/favorites" element={<Favorites />} />
