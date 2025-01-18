@@ -120,6 +120,7 @@
 // };
 
 // export default Sidebar;
+
 import React, { useEffect, useState } from "react";
 import { FaHeart, FaPlusCircle, FaUtensils, FaSignOutAlt, FaLayerGroup, FaCandyCane, FaWineBottle, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -138,24 +139,28 @@ const Sidebar = () => {
     }, [cart]);
 
     return (
-        <div className="lg:w-64 w-16 h-screen bg-white shadow-md flex flex-col justify-between transition-all duration-300 fixed top-0 left-0 z-50">
+        <div className="lg:w-64 w-20 h-screen bg-white shadow-md flex flex-col justify-between transition-all duration-300 fixed top-0 left-0 z-50">
             {/* Logo and Shopping Cart */}
             <div className="p-4 flex items-center justify-between">
                 <NavLink to="/" className="flex items-center">
-                    <img src={logo} alt="Logo" className="w-24 h-12 object-cover cursor-pointer" /> {/* Clickable logo */}
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        className="w-16 h-6 lg:w-24 lg:h-12 object-cover cursor-pointer"
+                    />
+                    {/* Clickable logo */}
                 </NavLink>
                 <NavLink to="/AddToCart">
                     <div className="relative">
-                        <FaShoppingCart className=" mr-[20px] text-xl text-gray-600 hover:text-orange-500 cursor-pointer transition-all hidden lg:block" />
+                        <FaShoppingCart className="text-xl text-gray-600 hover:text-orange-500 cursor-pointer transition-all hidden lg:block lg:mr-[20px]" />
                         {cartCount > 0 && (
-                            <span className="absolute bottom-1 right-0 text-x text-gray-600 font-semibold">
+                            <span className="absolute bottom-1 right-0 text-x text-gray-600 hidden lg:block font-semibold">
                                 {cartCount}
                             </span>
                         )}
                     </div>
                 </NavLink>
             </div>
-
 
             {/* Divider */}
             <hr className="my-4 border-gray-300" />
@@ -253,9 +258,25 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                 </ul>
+            {/* Divider just after navbar */}
+            <hr className="my-4 border-gray-300 block lg:hidden" />
+
+            <NavLink to="/AddToCart">
+                    <div className="relative">
+                        <FaShoppingCart className="text-xl text-gray-600 hover:text-orange-500 cursor-pointer ml-3 transition-all block lg:hidden lg:mr-[20px]" />
+                        {cartCount > 0 && (
+                            <span className="absolute bottom-1 right-9 text-x text-gray-600 block lg:hidden font-semibold">
+                                {cartCount}
+                            </span>
+                        )}
+                    </div>
+                </NavLink>
             </nav>
+
         </div>
     );
+
+
 };
 
 export default Sidebar;
